@@ -1,0 +1,140 @@
+
+
+//Create a collection & inserting documents:
+
+db.employee.insertMany([{"Name":"Ravi","Age":23,"Address":"Salem","DOB":"04-09-2001","Role":"SDE","Experience":""},
+                        {"Name":"Ram","Age":24,"Address":"Chennai","DOB":"04-09-2001","Role":"Manager","Experience":""},
+                        {"Name":"Nishanth","Age":20,"Address":"Kovai","DOB":"06-07-2004","Role":"Data Scientist","Experience":""},
+                        {"Name":"Kishor","Age":25,"Address":"Trichy","DOB":"02-04-1999","Role":"Web developer","Experience":""}])
+
+--output : 
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67319cbcfa190d3681a7d442'),
+    '1': ObjectId('67319cbcfa190d3681a7d443'),
+    '2': ObjectId('67319cbcfa190d3681a7d444'),
+    '3': ObjectId('67319cbcfa190d3681a7d445')
+  }
+}
+
+//To display the documents in Collections :
+
+db.employee.find()
+
+--output :
+{
+  _id: ObjectId('67319be39a083cb535f3d854'),
+  Name: 'Ravi',
+  Age: 23,
+  Address: 'Salem',
+  DOB: '04-09-2001',
+  Role: 'SDE',
+  Experience: ''
+}
+{
+  _id: ObjectId('67319be39a083cb535f3d855'),
+  Name: 'Ram',
+  Age: 24,
+  Address: 'Chennai',
+  DOB: '04-09-2001',
+  Role: 'Manager',
+  Experience: ''
+}
+
+  _id: ObjectId('67319be39a083cb535f3d856'),
+  Name: 'Nishanth',
+  Age: 20,
+  Address: 'Kovai',
+  DOB: '06-07-2004',
+  Role: 'Data Scientist',
+  Experience: ''
+}
+{
+  _id: ObjectId('67319be39a083cb535f3d857'),
+  Name: 'Kishor',
+  Age: 25,
+  Address: 'Trichy',
+  DOB: '02-04-1999',
+  Role: 'Web developer',
+  Experience: ''
+}
+
+//To update the Experience:
+
+db.employee.updateMany({"Age":{$gte:23}},{$set:{"Experience":"Skilled Person"}});
+
+--output :
+
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+
+//To replace :
+
+db.employee.replaceOne({"Age":20},{"Name":"Nishanth","Age":20,"Address":"Kovai","DOB":"06-07-2004","Role":"Data Scientist","Experience":"Newbie"})
+
+--output :
+
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+//to check :
+
+db.employee.find()
+
+--output :
+
+{
+  _id: ObjectId('67319de2fa190d3681a7d446'),
+  Name: 'Ravi',
+  Age: 23,
+  Address: 'Salem',
+  DOB: '04-09-2001',
+  Role: 'SDE',
+  Experience: 'Skilled Person'
+}
+{
+  _id: ObjectId('67319de2fa190d3681a7d447'),
+  Name: 'Ram',
+  Age: 24,
+  Address: 'Chennai',
+  DOB: '04-09-2001',
+  Role: 'Manager',
+  Experience: 'Skilled Person'
+}
+{
+  _id: ObjectId('67319de2fa190d3681a7d448'),
+  Name: 'Nishanth',
+  Age: 20,
+  Address: 'Kovai',
+  DOB: '06-07-2004',
+  Role: 'Data Scientist',
+  Experience: 'Newbie'
+}
+{
+  _id: ObjectId('67319de2fa190d3681a7d448'),
+  Name: 'Nishanth',
+  Age: 20,
+  Address: 'Kovai',
+  DOB: '06-07-2004',
+  Role: 'Data Scientist',
+  Experience: 'Newbie'
+}
+
+
+1) Import the libraries
+2) Import load driver
+3) Create Collections
+4) Create statements
+5) Execute statements
+6) Close Collections
